@@ -15,6 +15,18 @@
 if ( ! class_exists ( 'ADN_Comments' ) ) :
 
 class ADN_Comments {
+  public static function plugin_dir_url() {
+    return plugin_dir_url(__FILE__);
+  }
+
+  public static function embed_file_url() {
+    if (defined('WP_DEBUG') && WP_DEBUG) {
+      return plugin_dir_url(__FILE__) . 'embed.js';
+    } else {
+      return plugin_dir_url(__FILE__) . 'embed.min.js';
+    }
+  }
+
   public function __construct() {
     /*
      * The following functions have been adapted from the [Hide Comments Feature](http://wordpress.org/plugins/hide-comments-feature/) plugin.

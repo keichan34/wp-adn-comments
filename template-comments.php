@@ -15,5 +15,5 @@ if (!empty($adn_username)) {
   <script>
     var ADN_COMMENTS_CONFIG = <?php echo json_encode($config); ?>;
   </script>
-  <script async src="https://d105v2jof9gtr3.cloudfront.net/embed.js" id='adn-comments'></script>
+  <script async src="<?php echo ADN_Comments::embed_file_url(); ?>" id='adn-comments'></script>
 </div>
