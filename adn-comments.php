@@ -31,7 +31,6 @@ class ADN_Comments {
     /*
      * The following functions have been adapted from the [Hide Comments Feature](http://wordpress.org/plugins/hide-comments-feature/) plugin.
      */
-    add_action( 'init', array( $this, 'init' ) );
     add_action( 'wp_head', array( $this, 'remove_comments_css' ) );
     add_action( 'wp_meta', array( $this, 'remove_comments_link_meta' ) );
     add_action( 'admin_menu', array( $this, 'remove_discussion_options' ) );
@@ -44,19 +43,6 @@ class ADN_Comments {
 
     // Add the ADN username in the author's user profile page.
     add_filter( 'user_contactmethods', array( $this, 'user_contactmethods' ) );
-  }
-
-  function init() {
-    $args = array(
-      'public' => true,
-      '_builtin' => true,
-    );
-
-    foreach ( apply_filters( 'adn_comments_post_types', get_post_types( $args ) ) as $post_type )  {
-      if ( post_type_supports( $post_type, 'comments' ) )
-        remove_post_type_support( $post_type, 'comments' );
-    }
-
   }
 
   function remove_comments_css() {
